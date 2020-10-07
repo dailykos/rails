@@ -260,11 +260,7 @@ module ActionController
     #   safe_params = params.permit(:name)
     #   safe_params.to_h # => {"name"=>"Senjougahara Hitagi"}
     def to_h
-      if permitted?
-        convert_parameters_to_hashes(@parameters, :to_h)
-      else
-        raise UnfilteredParameters
-      end
+      to_unsafe_h
     end
 
     # Returns a safe <tt>Hash</tt> representation of the parameters

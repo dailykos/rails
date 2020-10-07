@@ -120,7 +120,7 @@ module ActionController
   #   params = ActionController::Parameters.new(key: "value")
   #   params[:key]  # => "value"
   #   params["key"] # => "value"
-  class Parameters < ActiveSupport::HashWithIndifferentAccess
+  class Parameters
     cattr_accessor :permit_all_parameters, instance_accessor: false, default: false
 
     cattr_accessor :action_on_unpermitted_parameters, instance_accessor: false

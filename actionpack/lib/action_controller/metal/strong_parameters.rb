@@ -120,7 +120,7 @@ module ActionController
   #   params = ActionController::Parameters.new(key: "value")
   #   params[:key]  # => "value"
   #   params["key"] # => "value"
-  class Parameters
+  class Parameters < ActiveSupport::HashWithIndifferentAccess
     cattr_accessor :permit_all_parameters, instance_accessor: false, default: false
 
     cattr_accessor :action_on_unpermitted_parameters, instance_accessor: false
@@ -1075,7 +1075,7 @@ module ActionController
     # Returns a new ActionController::Parameters object that
     # has been instantiated with the <tt>request.parameters</tt>.
     def params
-      @_params ||= Parameters.new(request.parameters).values
+      @_params ||= Parameters.new(request.parameters)
     end
 
     # Assigns the given +value+ to the +params+ hash. If +value+
